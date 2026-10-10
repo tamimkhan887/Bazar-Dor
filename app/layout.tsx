@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Marquee></Marquee>
         </Suspense>
         <hr className="border border-gray-100"/>
-        <div className="container mx-auto px-12">
+        <div className="container mx-auto px-3 md:px-6 lg:px-12">
           <Suspense fallback={<p>Loading...</p>}>
             {children}
           </Suspense>
