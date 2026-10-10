@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./Components/Navbar";
 import Navlinks from "./Components/Navlinks";
 import Marquee from "./Components/Marquee";
+import Footer from "./Components/Footer";
 
 const NotoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </Suspense>
         </div>
+        <Footer></Footer>
       </body>
     </html>
   );
