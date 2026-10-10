@@ -11,7 +11,7 @@ const Marquee = async () => {
         change: { dir: string, pct: number }
         today: number
     }
-    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
+    const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products")
     const data: MarqueeProps[] = await res.json()
     const firstTenData = data.slice(0, 20)
     return (

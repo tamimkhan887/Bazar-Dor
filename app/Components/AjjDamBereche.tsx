@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ProductsType } from "../Type/Products";
 
 const AjjDamBereche = async () => {
-    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products");
+    const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products");
     const data: ProductsType[] = await res.json();
     const filterDam = data.filter(d => d.change.dir === "up");
     const sortedData = filterDam.sort((a, b) => b.change.pct - a.change.pct);
