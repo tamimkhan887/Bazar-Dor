@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import DateTime from "./Components/DateTime";
 import banner from "@/public/bazar-hero.png"
 import AjjDamBereche from "./Components/AjjDamBereche";
+import AjjDamKomche from "./Components/AjjDamKomche";
+import SobPonno from "./Components/SobPonno";
 const Home = () => {
   return (
     <div>
@@ -23,6 +25,12 @@ const Home = () => {
       </div>
       <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
         <AjjDamBereche />
+      </Suspense>
+      <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
+        <AjjDamKomche></AjjDamKomche>
+      </Suspense>
+      <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
+        <SobPonno></SobPonno>
       </Suspense>
     </div>
   );
