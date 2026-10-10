@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
+import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Components/Navbar";
+import Navlinks from "./Components/Navlinks";
+import Marquee from "./Components/Marquee";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const NotoSerifBengali = Noto_Serif_Bengali({
+  subsets: ["latin", "bengali"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,9 +20,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${NotoSerifBengali.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar></Navbar>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Navlinks></Navlinks>
+        </Suspense>
+        <hr className="border border-gray-100"/>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Marquee></Marquee>
+        </Suspense>
+        <hr className="border border-gray-100"/>
+        <div className="container mx-auto px-12">
+          <Suspense fallback={<p>Loading...</p>}>
+            {children}
+          </Suspense>
+        </div>
+      </body>
     </html>
   );
 }
