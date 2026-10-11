@@ -2,6 +2,7 @@ import { ProductsType } from "@/app/Type/Products";
 import { Suspense } from "react";
 import CategoryProducts from "./CategoryProducts";
 import { Spinner } from "@heroui/react";
+import { notFound } from "next/navigation";
 type CategoryPageProps = {
     params: Promise<{ slag: string }>;
 };
@@ -10,8 +11,20 @@ type CategoryPageProps = {
 const CategoryContent = async ({ params }: CategoryPageProps) => {
     const { slag } = await params;
 
-    const data = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${slag}`)
-    const catagorieData: ProductsType[] = await data.json()
+    const response = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${slag}`)
+    if (response.status === 404) {
+        notFound();
+    }
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch category products: ${response.status}`);
+    }
+
+    const catagorieData: ProductsType[] = await response.json();
+    if (catagorieData.length === 0) {
+        notFound();
+    }
+
     return (
         <div>
             <div className="flex items-center bg-gray-100 mt-6 rounded-xl p-3">

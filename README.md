@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# বাজার দর | BazarDor
 
-## Getting Started
+**BazarDor** is a Bengali-language market price guide that helps people quickly
+check everyday product prices, see how prices are changing, and compare prices
+reported across local markets.
 
-First, run the development server:
+## Technologies
+
+| Area | Technology |
+| --- | --- |
+| Web framework | Next.js 16 (App Router) |
+| UI | React 19, TypeScript, Tailwind CSS 4, HeroUI |
+| Authentication | Better Auth |
+| Database | MongoDB |
+| Icons and notifications | React Icons, React Toastify |
+| Market data | Programming Hero BazarDor API |
+
+## Key features
+
+1. **Today’s prices at a glance** — Browse current prices for everyday
+   essentials, with product categories and units shown in Bengali.
+2. **Price-change highlights** — Quickly find products whose prices have risen
+   or fallen, with the percentage change displayed.
+3. **Category browsing and sorting** — Explore products by category and sort
+   them by price from high to low or low to high.
+4. **Detailed product and market comparisons** — Review a product’s current,
+   previous-day, previous-week, and previous-month prices, plus reported
+   minimum and maximum prices by market and division.
+5. **Accounts and profile management** — Register or sign in with email,
+   Google, or GitHub, then update your profile name.
+
+## Getting started
+
+### Prerequisites
+
+- Node.js and npm
+- A MongoDB connection string
+- Google and GitHub OAuth credentials if you want to enable those sign-in
+  providers
+
+### Install and run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to use the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the project root and set the values required by the
+authentication configuration:
 
-## Learn More
+```env
+BETTER_AUTH_MONGODB_URL=your_mongodb_connection_string
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
 
-To learn more about Next.js, take a look at the following resources:
+Keep credentials private. Never commit real secrets to source control.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev    # Start the development server
+npm run lint   # Run ESLint
+npm run build  # Create a production build
+npm run start  # Serve the production build
+```

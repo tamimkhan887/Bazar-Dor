@@ -2,13 +2,14 @@ import down from "@/public/down.png";
 import up from "@/public/up.png";
 import Image from "next/image";
 import { ProductsType } from "../Type/Products";
+import Link from "next/link";
 
 const SobPonno = async () => {
     const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products");
     const data: ProductsType[] = await res.json();
 
     return (
-        <div className="mt-12">
+        <div id="showproducts" className="mt-12 scroll-mt-20">
             <div>
                 <h3 className="font-bold text-xl text-gray-800">সব পণ্য</h3>
                 <p className="text-xs text-gray-500 mt-2">মোট {data.length} টি পণ্য দেখানো হচ্ছে</p>
@@ -18,10 +19,8 @@ const SobPonno = async () => {
                 {data.map((sd) => {
                     const isUp = sd.change.dir === "up";
                     return (
-                        <div 
-                            className="bg-gray-100 border border-gray-100 shadow-sm  rounded-2xl p-5 flex flex-col justify-between" 
-                            key={sd.id}
-                        >
+                        <Link href={`/products/${sd.id}`} key={sd.id}><div
+                            className="bg-gray-100 border border-gray-100 shadow-sm  rounded-2xl p-5 flex flex-col justify-between">
                             <div className="flex items-start gap-4">
                                 <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-gray-100">
                                     {sd.image}
@@ -41,20 +40,19 @@ const SobPonno = async () => {
                                         {sd.today} <span className="text-sm font-normal text-gray-600">টাকা</span>
                                     </p>
                                 </div>
-                                
-                                <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                                    isUp ? "bg-red-50 text-red-600" : "bg-green-50 text-green-600"
-                                }`}>
-                                    <Image 
-                                        width={10} 
-                                        height={10} 
-                                        src={isUp ? up : down} 
-                                        alt={isUp ? "increase" : "decrease"} 
+
+                                <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${isUp ? "bg-red-50 text-red-600" : "bg-green-50 text-green-600"
+                                    }`}>
+                                    <Image
+                                        width={10}
+                                        height={10}
+                                        src={isUp ? up : down}
+                                        alt={isUp ? "increase" : "decrease"}
                                     />
                                     <span>{sd.change.pct}%</span>
                                 </div>
                             </div>
-                        </div>
+                        </div></Link>
                     );
                 })}
             </div>

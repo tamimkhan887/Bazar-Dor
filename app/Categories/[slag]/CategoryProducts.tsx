@@ -5,6 +5,7 @@ import Image from "next/image";
 import down from "@/public/down.png";
 import up from "@/public/up.png";
 import type { ProductsType } from "@/app/Type/Products";
+import Link from "next/link";
 
 type SortOrder = "default" | "high-to-low" | "low-to-high";
 
@@ -54,43 +55,44 @@ const CategoryProducts = ({ products }: CategoryProductsProps) => {
                         const isUp = product.change.dir === "up";
 
                         return (
-                            <div
-                                className="bg-gray-100 border border-gray-100 shadow-sm rounded-2xl p-5 flex flex-col justify-between"
-                                key={product.id}
-                            >
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-gray-100">
-                                        {product.image}
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-gray-800 text-lg">{product.nameBn}</h4>
-                                        <p className="text-sm text-gray-500">
-                                            {product.unit === "kg" ? "প্রতি কেজি" : product.unit}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="mt-6 pt-4 border-t border-gray-100 flex items-end justify-between">
-                                    <div>
-                                        <p className="text-xs text-gray-400 mb-1">আজকের দাম</p>
-                                        <p className="text-xl font-bold text-gray-900">
-                                            {product.today} <span className="text-sm font-normal text-gray-600">টাকা</span>
-                                        </p>
+                            <Link href={`/products/${product.id}`}  key={product.id}>
+                                <div
+                                    className="bg-gray-100 border border-gray-100 shadow-sm rounded-2xl p-5 flex flex-col justify-between"
+                                   
+                                >
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-gray-100">
+                                            {product.image}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-gray-800 text-lg">{product.nameBn}</h4>
+                                            <p className="text-sm text-gray-500">
+                                                {product.unit === "kg" ? "প্রতি কেজি" : product.unit}
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                                        isUp ? "bg-red-50 text-red-600" : "bg-green-50 text-green-600"
-                                    }`}>
-                                        <Image
-                                            width={10}
-                                            height={10}
-                                            src={isUp ? up : down}
-                                            alt={isUp ? "increase" : "decrease"}
-                                        />
-                                        <span>{product.change.pct}%</span>
+                                    <div className="mt-6 pt-4 border-t border-gray-100 flex items-end justify-between">
+                                        <div>
+                                            <p className="text-xs text-gray-400 mb-1">আজকের দাম</p>
+                                            <p className="text-xl font-bold text-gray-900">
+                                                {product.today} <span className="text-sm font-normal text-gray-600">টাকা</span>
+                                            </p>
+                                        </div>
+
+                                        <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${isUp ? "bg-red-50 text-red-600" : "bg-green-50 text-green-600"
+                                            }`}>
+                                            <Image
+                                                width={10}
+                                                height={10}
+                                                src={isUp ? up : down}
+                                                alt={isUp ? "increase" : "decrease"}
+                                            />
+                                            <span>{product.change.pct}%</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>

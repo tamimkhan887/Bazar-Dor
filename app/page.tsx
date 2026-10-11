@@ -6,7 +6,9 @@ import AjjDamBereche from "./Components/AjjDamBereche";
 import AjjDamKomche from "./Components/AjjDamKomche";
 import SobPonno from "./Components/SobPonno";
 import { Spinner } from "@heroui/react";
+import ScrollHandle from "./Components/ScrollHandle";
 const Home = () => {
+
   return (
     <div>
       <div className="flex flex-col-reverse md:flex-row justify-between items-center bg-gray-100 mt-8 rounded-2xl gap-10 pb-8">
@@ -18,7 +20,7 @@ const Home = () => {
           </p>
           <h3 className="text-4xl font-bold">আজকের বাজারের দাম এক নজরে</h3>
           <p className="text-sm">চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন- <br />সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
-          <button className="text-white font-semibold text-sm bg-green-700 px-5 py-3 rounded-lg">সব পণ্য দেখুন</button>
+          <ScrollHandle></ScrollHandle>
         </div>
         <div>
           <Image src={banner} alt="banner"></Image>

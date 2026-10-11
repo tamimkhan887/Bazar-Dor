@@ -48,7 +48,7 @@ const Page = () => {
                 <h3 className="text-black font-bold text-2xl">আমার প্রোফাইল</h3>
                 <p className="text-sm text-gray-600">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
             </div>
-            <div className="bg-gray-100 p-6 mt-6 flex justify-between items-center rounded-xl">
+            <div className="bg-gray-100 p-6 mt-6 flex flex-col md:flex-row justify-between items-center rounded-xl gap-4">
                 <div>
                     <h3>Name: <span className="text-green-700">{session?.user.name}</span></h3>
                     <h3>Email: <span className="text-green-700">{session?.user.email}</span></h3>
