@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import Navlinks from "./Components/Navlinks";
 import Marquee from "./Components/Marquee";
 import Footer from "./Components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const NotoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </Suspense>
         </div>
         <Footer></Footer>
+        <ToastContainer position="bottom-center"/>
       </body>
     </html>
   );
