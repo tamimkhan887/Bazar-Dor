@@ -4,6 +4,7 @@ import logo from "@/public/logo-icon.png"
 import DateTime from "./DateTime";
 import Link from "next/link";
 import UserInfo from "./UserInfo";
+import { Spinner } from "@heroui/react";
 const Navbar = () => {
     return (
         <div>
@@ -16,7 +17,7 @@ const Navbar = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-xs md:text-2xl text-black">বাজার দর</h3>
-                                <Suspense fallback={<p>...</p>}>
+                                <Suspense fallback={<Spinner size="sm" />}>
                                     <p className="text-xs"><DateTime></DateTime></p>
                                 </Suspense>
                             </div>

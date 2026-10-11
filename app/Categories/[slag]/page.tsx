@@ -1,6 +1,7 @@
 import { ProductsType } from "@/app/Type/Products";
 import { Suspense } from "react";
 import CategoryProducts from "./CategoryProducts";
+import { Spinner } from "@heroui/react";
 type CategoryPageProps = {
     params: Promise<{ slag: string }>;
 };
@@ -29,7 +30,7 @@ const CategoryContent = async ({ params }: CategoryPageProps) => {
 };
 
 const CategoryPage = ({ params }: CategoryPageProps) => (
-    <Suspense fallback={<div>Loading category...</div>}>
+    <Suspense fallback={<div className="flex justify-center py-8"><Spinner /></div>}>
         <CategoryContent params={params} />
     </Suspense>
 );

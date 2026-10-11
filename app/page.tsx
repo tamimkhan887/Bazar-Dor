@@ -5,13 +5,14 @@ import banner from "@/public/bazar-hero.png"
 import AjjDamBereche from "./Components/AjjDamBereche";
 import AjjDamKomche from "./Components/AjjDamKomche";
 import SobPonno from "./Components/SobPonno";
+import { Spinner } from "@heroui/react";
 const Home = () => {
   return (
     <div>
       <div className="flex flex-col-reverse md:flex-row justify-between items-center bg-gray-100 mt-8 rounded-2xl gap-10 pb-8">
         <div className="space-y-6 px-8 ">
           <p className="inline-block px-4 py-1 font-medium text-sm bg-green-50 rounded-2xl text-green-700">
-            <Suspense fallback={<span className="text-sm">...</span>}>
+            <Suspense fallback={<Spinner size="sm" />}>
               <DateTime />
             </Suspense>
           </p>
@@ -23,13 +24,13 @@ const Home = () => {
           <Image src={banner} alt="banner"></Image>
         </div>
       </div>
-      <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
+      <Suspense fallback={<div className="mt-10 flex justify-center"><Spinner /></div>}>
         <AjjDamBereche />
       </Suspense>
-      <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
+      <Suspense fallback={<div className="mt-10 flex justify-center"><Spinner /></div>}>
         <AjjDamKomche></AjjDamKomche>
       </Suspense>
-      <Suspense fallback={<p className="mt-10">লোড হচ্ছে...</p>}>
+      <Suspense fallback={<div className="mt-10 flex justify-center"><Spinner /></div>}>
         <SobPonno></SobPonno>
       </Suspense>
     </div>

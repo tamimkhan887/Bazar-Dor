@@ -7,6 +7,7 @@ import Navlinks from "./Components/Navlinks";
 import Marquee from "./Components/Marquee";
 import Footer from "./Components/Footer";
 import { ToastContainer } from "react-toastify";
+import { Spinner } from "@heroui/react";
 
 const NotoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -26,16 +27,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<div className="flex justify-center py-4"><Spinner /></div>}>
           <Navlinks></Navlinks>
         </Suspense>
         <hr className="border border-gray-100"/>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<div className="flex justify-center py-4"><Spinner /></div>}>
           <Marquee></Marquee>
         </Suspense>
         <hr className="border border-gray-100"/>
         <div className="container mx-auto px-3 md:px-6 lg:px-12">
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<div className="flex justify-center py-8"><Spinner /></div>}>
             {children}
           </Suspense>
         </div>
