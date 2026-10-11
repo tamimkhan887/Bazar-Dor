@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import logo from "@/public/logo-icon.png"
 import DateTime from "./DateTime";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 const Navbar = () => {
     return (
         <div>
@@ -21,14 +22,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </Link>
-                    <div className="flex gap-2 md:gap-8 items-center">
-                        <Link href="/signin">
-                            <button className="text-xs md:text-sm font-semibold  text-nowrap">সাইন ইন</button>
-                        </Link>
-                        <Link href="/signup">
-                            <button className="bg-green-700 text-xs md:text-sm rounded-lg text-white font-semibold px-2 text-nowrap md:px-4 py-3">সাইন আপ</button>
-                        </Link>
-                    </div>
+                    <UserInfo></UserInfo>
                 </div>
             </div>
             <hr className="border border-gray-100 my-4" />
